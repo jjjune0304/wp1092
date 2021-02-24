@@ -7,4 +7,4 @@
 ### Player Style Reference
 [Tutorial](https://levelup.gitconnected.com/creating-a-simple-music-player-with-javascript-e825d93adff3)
 
-<img src="https://i.imgur.com/NI13EyI.gif" width="80%" height="80%" />
+<img src="https://i.imgur.com/NI13EyI.gif" width="60%" height="60%" />
