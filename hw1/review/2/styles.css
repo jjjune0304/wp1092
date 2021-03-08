@@ -1,0 +1,97 @@
+body{
+    font-family: "Proxima Nova", monospace;
+}
+
+.title{
+    text-align: center;
+}
+
+.name{
+    text-align: center;
+}
+
+.container {
+    position: absolute;
+    height: 380pt;
+    width: 240pt;
+    margin: auto;
+    top: 40pt;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    align-items: center;
+    background: linear-gradient(to bottom, #BA511D, #4F2510);
+    border-radius: 10px; /* round corner */
+    box-shadow: 0 0 10px #000000;
+
+}
+
+#albumn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50pt;
+    width: 180pt;
+}
+
+input[type="range"] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5pt;
+    width: 180pt;
+}
+
+#current-time, #left-time {
+    display: inline;
+}
+#current-time {
+    margin-left: 30pt;
+    float: left;
+    color: #FFFFFF;
+}
+#left-time {
+    margin-right: 30pt;
+    float: right;
+    color: #FFFFFF;
+}
+
+.music-controller{
+    display: block;
+    margin-left: 38pt;
+    margin-top: 25pt;
+}
+
+#play-icon, #forward-icon, #backward-icon {
+    width: 50pt;
+    margin-left: auto;
+    margin-right: auto;
+    filter: invert(100%) sepia(1%) saturate(0%) hue-rotate(93deg) brightness(110%) contrast(101%);
+}
+
+.song-name {
+    font-family: "Proxima Nova", sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 14pt;
+    text-align: left;
+    margin-left: 30pt;
+    margin-top: 15pt;
+}
+
+.song-artist {
+    font-family: "Proxima Nova", sans-serif;
+    color: #FFFFFF;
+    font-size: 10pt;
+    text-align: left;
+    margin-left: 30pt;
+    margin-top: 4pt;
+}
+
+.author-right {
+    position: absolute; 
+    bottom:0px;
+    text-align: center;
+    width:100%;
+}
