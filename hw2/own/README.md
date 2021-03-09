@@ -3,4 +3,4 @@
 [Loading function](https://guahsu.io/2017/11/JavaScript30-Final-Gif-Loader/)
 
 ### Demo
-[Link](https://jjjune0304.github.io/wp1092/hw2/own/)
+[Link](https://jjjune0304.github.io/wp1092/hw2/own/index.html)
