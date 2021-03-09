@@ -3,5 +3,5 @@
 [Loading function](https://guahsu.io/2017/11/JavaScript30-Final-Gif-Loader/)
 
 ## Demo
-To watch the result online, please click the link below.
+To watch the result online, please click the link below. \
 [link](https://jjjune0304.github.io/wp1092/hw2/own/index.html)
