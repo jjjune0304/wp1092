@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Viewer</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="styles.css"
+        />
+    </head>
+    <div id="loader"><img src="https://imgur.com/a5wCr9L.gif"></div>
+    <body>
+        <div class="image-viewer__container">
+            <h6 class="image-viewer__title">Image Viewer Title</h6>
+            <div class="image-viewer__main">
+                <button class="image-viewer__button" id="back"><img src="images/back.png"></button>
+                <div class="image-viewer__display">
+                    <img id="display" src="https://imgur.com/CyIVCh4.jpg">
+                    <div class="image-viewer__display-source-wrapper">
+                        <span><a href="https://www.bbc.com/zhongwen/trad/business-42495793">Source</a></span>
+                    </div>
+                </div>
+                <button class="image-viewer__button" id="next"><img src="images/next.png"></button>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
