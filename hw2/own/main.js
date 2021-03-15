@@ -15,7 +15,7 @@ img_src = [
 prev.classList.add("disabled"); // from start
 display.src = img_src[img_idx];
 src.href = img_src[img_idx];
-src.textContent = img_src[img_idx];
+// src.textContent = img_src[img_idx];
 checkLoad()
 
 function nextPic() {
@@ -28,7 +28,7 @@ function nextPic() {
     }
     display.src = img_src[img_idx];
     src.href = img_src[img_idx];
-    src.textContent = img_src[img_idx];
+    // src.textContent = img_src[img_idx];
     checkLoad()
 }
 
@@ -41,7 +41,7 @@ function prevPic() {
         prev.classList.add("disabled");
     display.src = img_src[img_idx];
     src.href = img_src[img_idx];
-    src.textContent = img_src[img_idx];
+    // src.textContent = img_src[img_idx];
     checkLoad()
 }
 
