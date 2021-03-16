@@ -11,6 +11,8 @@ function clickCommentBox() {
     // 是按了輸入欄之後按鈕才會出現(在打字前就會出現)
     cancel.style.visibility = 'visible';
     comment.style.visibility = 'visible';
+    cancel.style.display = 'flex';
+    comment.style.display = 'flex';
 };
 
 function detect() {
@@ -57,6 +59,8 @@ function clickComment(){
     commentgroup.appendChild(iDiv);
     cancel.style.visibility = 'visible';
     comment.style.visibility = 'visible';
+    cancel.style.display = 'flex';
+    comment.style.display = 'flex';
     count += 1;
     var s = count.toString();
     s += '則留言';
