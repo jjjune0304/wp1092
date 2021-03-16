@@ -67,11 +67,10 @@ let cancel = document.querySelector('#cancel-button');
 function clickCancel() {
     // 按下「取消」按鈕後，清除輸入欄的內容並隱藏(不要移除)「取消」和「留言」按鈕
     commentinput.value = "";
-    if (count != 1){
+    if (count == 1){
         cancel.style.visibility = 'hidden';
         comment.style.visibility = 'hidden';
         cancel.style.display = 'none';
         comment.style.display = 'none';
-
     }
 }
