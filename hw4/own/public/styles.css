@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+.index_cell {
+    height: 5px;
+    width: 10px;
+    border-style: solid;
+    border-color: grey;
+    background-color: lightgrey;
+    color: grey;
+    text-align: center;
+}
+
+.sheet_cell {
+    height: 5px;
+    width: 20px;
+    border-style: solid;
+    border-color: grey;
+    background-color: white;
+    color: black;
+}
