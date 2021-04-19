@@ -15,7 +15,7 @@ class Cell extends React.Component {
         return  <td className={className+(select?" select":"")}> { this.state.editing ?
                     <input ref={this.input} value={value} readOnly={!this.state.editing}
                         onChange={e => onChange(e.target.value, !this.state.editing)}
-                        onKeyPress={e => e.key=='Enter'?this.handleEnter():""}
+                        onKeyPress={e => e.key==='Enter'?this.handleEnter():""}
                         onBlur={this.onBlur} /> :
                     <div ref={this.box} tabIndex="-1" className="content-box"
                         onKeyPress={e => this.handleKeyPress(e)}
@@ -48,9 +48,9 @@ class Cell extends React.Component {
     handleKeyPress = (e) => {
         console.log(e.key);
         this.props.onChange(e.key, !this.state.editing); // clear text
-        if (e.key != 'Delete' && e.key != 'Backspace'){
+        if (e.key !== 'Delete' && e.key !== 'Backspace'){
             this.onFocus();
-            if (e.key != 'Enter') {
+            if (e.key !== 'Enter') {
                 this.props.onChange(e.key, false);
             }
         }

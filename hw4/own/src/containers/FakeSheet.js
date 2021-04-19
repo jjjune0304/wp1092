@@ -2,6 +2,22 @@ import React, { Component } from "react";
 import { useState, useEffect } from 'react';
 import Table from "../components/Table";
 
+function Button(props) {
+    const [cell, setCell] = useState([-1,-1]);
+    const {changeData, handleSelect, text} = props;
+    let handleMouseDown = () => {
+        let select_cell = changeData();
+        setCell(select_cell);
+    };
+    let handleClick = (e) => {
+        e.currentTarget.blur();
+        console.log(cell);
+        if(cell[0] !== -1 && cell[1] !== -1) handleSelect(cell[0],cell[1],false);
+    };
+    return <button className="button" onMouseDown={handleMouseDown} 
+            onClick={(e) => handleClick(e)}> {text}
+            </button>;
+}
 
 class FakeSheet extends Component {
     constructor(props) {
@@ -25,13 +41,13 @@ class FakeSheet extends Component {
             <>
                 <div className="container">
                     <div id="row-header">
-                        <button className="button" onClick={this.handleRowAdd}> + </button>
-                        <button className="button"> - </button>
+                        <Button changeData={this.AddRow} handleSelect={this.handleSelect} text="+" />
+                        <Button changeData={this.RemoveRow} handleSelect={this.handleSelect} text="-" />
                     </div>
                     <div className="col-wrapper">
                         <div id="col-header">
-                            <button className="button"> + </button>
-                            <button className="button"> - </button>
+                            <Button changeData={this.AddCol} handleSelect={this.handleSelect} text="+" />
+                            <Button changeData={this.RemoveCol} handleSelect={this.handleSelect} text="-" />
                         </div>
                         <div id="table-container">
                             <Table data={this.state.data} row_header={this.state.row_header}
@@ -44,29 +60,78 @@ class FakeSheet extends Component {
         );
     }
 
-    handleRowAdd = () => {
-        this.setState(prevState => {
-            let row_num = prevState.row_header.length + 1;
-            let col_num = prevState.col_header.length;
-            let new_data = prevState.data.slice(0);
+    AddRow = () => {
+        let row_num = this.state.row_header.length + 1;
+        let col_num = this.state.col_header.length;
+        let new_data = this.state.data.slice(0);
+        let new_row = new Array(row_num).fill(false);
+        let new_select = new Array(row_num).fill("").map(() => new Array(col_num).fill(false));
+        let row = this.state.select_row;
+        console.log("Add Row: "+row);
+        if (row !== -1) {
+            new_data.splice(row, 0, Array(col_num).fill(false)); // add one row
+        } else {
+            new_data.splice(row_num, 0, Array(col_num).fill(false)); // add one row at bottom
+        }
+        this.setState({ data: new_data, row_header: new_row,
+                    select_data: new_select,select_row: -1 });
+        return [row, this.state.select_col];
+    };
+
+    RemoveRow = () => {
+        let row = this.state.select_row;
+        console.log("Remove Row: "+row);
+        if (row !== -1) {
+            let row_num = this.state.row_header.length - 1;
+            let col_num = this.state.col_header.length;
+            let new_data = this.state.data.slice(0);
             let new_row = new Array(row_num).fill(false);
             let new_select = new Array(row_num).fill("").map(() => new Array(col_num).fill(false));
-            var row = prevState.select_row;
-            console.log(row);
-            if (row !== -1) {
-                new_data.splice(row, 0, Array(col_num).fill(false));
-                row = row + 1;
-                new_select[row][prevState.select_col] = true;
-                new_row[row] = true;
-            } else {
-                new_data.splice(row_num, 0, Array(col_num).fill(false));
+            new_data.splice(row, 1); // remove one row
+            this.setState({ data: new_data, row_header: new_row,
+                select_data: new_select,select_row: -1 });
+        }
+        return [row, this.state.select_col];
+    };
+
+    AddCol = () => {
+        let row_num = this.state.row_header.length;
+        let col_num = this.state.col_header.length + 1;
+        let new_data = this.state.data.slice(0);
+        let new_col = new Array(col_num).fill(false);
+        let new_select = new Array(row_num).fill("").map(() => new Array(col_num).fill(false));
+        let col = this.state.select_col;
+        console.log("Add Col: "+col);
+        if (col !== -1) {
+            for (let i = 0; i < row_num; i++) {
+                new_data[i].splice(col, 0, false); // add one new col
             }
-            return {
-                    data: new_data,
-                    row_header: new_row,
-                    select_data: new_select,
-                    select_row: row };
-        });
+        } else {
+            for (let i = 0; i < row_num; i++) {
+                new_data[i].splice(col_num, 0, false); // add one new col
+            }
+        }
+        this.setState({ data: new_data, col_header: new_col,
+                    select_data: new_select,select_col: -1 });
+        return [this.state.select_row, col];
+    };
+
+    RemoveCol = () => {
+        let col = this.state.select_col;
+        console.log("Remove Col: "+col);
+        if (col !== -1) {
+            let row_num = this.state.row_header.length;
+            let col_num = this.state.col_header.length - 1;
+            let new_data = this.state.data.slice(0);
+            let new_col = new Array(col_num).fill(false);
+            let new_select = new Array(row_num).fill("").map(() => new Array(col_num).fill(false));
+            for (let i = 0; i < row_num; i++) {
+                new_data[i].splice(col, 1); // remove one col
+            }
+            this.setState({ data: new_data, col_header: new_col,
+                select_data: new_select, select_col: -1 });
+        }
+        return [this.state.select_row, col];
     };
 
     handleChangeEvent = (value, clear, row_id, col_id) => {
@@ -89,12 +154,11 @@ class FakeSheet extends Component {
         let new_select = new Array(row_num).fill("").map(() => new Array(col_num).fill(false));
         var row = -1, col = -1;
         if (!reset) {
-            console.log("selectR"+i+"C"+j);
             new_row[i] = true;  new_col[j] = true;
             new_select[i][j] = true;
             row = i; col = j;
         }
-        console.log("selectR"+row+"C"+col);
+        console.log("selectR"+i+"C"+j+"reset"+reset);
         this.setState({ row_header: new_row, col_header: new_col,
                         select_data: new_select,
                         select_row: row, select_col: col });
