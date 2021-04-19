@@ -1,7 +1,14 @@
 import React from "react";
-export default (props) => (
-    <div className="header"> 
-        <button> + </button>
-        <button> - </button> 
-    </div>
-)
+export default ({className, num, select, letter}) => {
+    let s = "";
+    if (letter) {
+        if(num > 26){
+            s = s + String.fromCharCode(64 + Math.floor(num / 26));
+            num = num % 26;
+        }
+        s = s + String.fromCharCode(64 + num);
+    } else {
+        s = num;
+    }
+    return <td className={className+(select?" select":"")}> {s} </td>;
+}

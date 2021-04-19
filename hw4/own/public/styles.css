@@ -2,21 +2,138 @@
     box-sizing: border-box;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.fixed-header>thead>tr>td {
+    border: solid 1px grey;
+    box-shadow: 0 1px;
+    position: sticky; 
+    top: 0;
+}
+
+.fixed-header>thead>tr>td:first-child {
+    box-shadow: 1px 1px;
+    position: sticky; 
+    left: 0;
+    z-index: 1;
+}
+
+.fixed-header>tbody>tr>td:first-child {
+    box-shadow: 1px 0;
+    position: sticky; 
+    left: 0;
+}
+
+input {
+    width: 100%;
+    border: none;
+    text-align: right;
+}
+
+input:focus{
+    outline: none;
+}
+
+.empty_cell {
+    height: 20px;
+    width: 30px;
+    border: solid 1px grey;
+    background-color: whitesmoke;
+    color: grey;
+}
+
 .index_cell {
-    height: 5px;
-    width: 10px;
-    border-style: solid;
-    border-color: grey;
-    background-color: lightgrey;
+    border: solid 1px grey;
+    background-color: whitesmoke;
     color: grey;
     text-align: center;
 }
 
+.index_cell.select {
+    background-color: gainsboro;
+}
+
 .sheet_cell {
-    height: 5px;
-    width: 20px;
-    border-style: solid;
-    border-color: grey;
+    height: 20px;
+    min-width: 80px;
+    border: solid 1px gainsboro;
     background-color: white;
     color: black;
+    text-align: right;
+}
+
+.sheet_cell.select {
+    border: solid 2px mediumblue;
+}
+
+.sheet_cell input:focus {
+    color: black;
+}
+
+.content-box {
+    min-height: 100%;
+    width: 100%;
+    display:inline-block;
+    background-color: transparent;
+    text-align: right;
+    font-family: sans-serif;
+}
+
+.content-box:focus {
+    outline: none;
+}
+
+.button {
+    border: solid 1px lightgrey;
+    background-color: whitesmoke;
+    height: 30px;
+    width: 30px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.col-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+#table-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+}
+
+#row-header {
+    padding-top: 50px;
+    height: 100%;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border-right: solid 1px grey;
+}
+
+#col-header {
+    padding-left: 30px;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+    border-bottom: solid 1px grey;
 }

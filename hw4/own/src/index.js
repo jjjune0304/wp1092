@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import TodoApp from "./containers/FakeSheet";
+import FakeSheet from "./containers/FakeSheet";
 
 ReactDOM.render(
     <FakeSheet />,
