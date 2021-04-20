@@ -263,13 +263,37 @@ class MergeSchool extends Component {
         return result;
     };
     
+    arraysEqual(a, b) {
+        if (a === b) return true;
+        if (a == null || b == null) return false;
+        if (a.length !== b.length) return false;
+      
+        // If you don't care about the order of the elements inside
+        // the array, you should sort both arrays here.
+        // Please note that calling sort on an array will modify that array.
+        // you might want to clone your array first.
+      
+        for (var i = 0; i < a.length; ++i) {
+          if (a[i] !== b[i]) return false;
+        }
+        return true;
+      }
+
     // Check if it is gameover
     checkGameover = (board) => {
         // #########################
         // # 9 Implement yourself
         // #########################
-        
-        return false;
+        let test = this.moveLeft(board).board;
+        if (this.justifyMove(board, test)) return false;
+        test = this.moveUp(board).board;
+        if (this.justifyMove(board, test)) return false;
+        test = this.moveRight(board).board;
+        if (this.justifyMove(board, test)) return false;
+        test = this.moveDown(board).board;
+        if (this.justifyMove(board, test)) return false;
+        console.log("Lose");
+        return true;
     };
 
     // Check if it is win
@@ -333,7 +357,7 @@ class MergeSchool extends Component {
             <>      
                 <Header qs={this.state.qs_ranking} step={this.state.step} 
                         best={this.state.best_qs_ranking} handleNewGame={this.initializeBoard}/>
-                <Board2048 className="wrapper" board={this.state.board}/>
+                <Board2048 className="wrapper" board={this.state.board} lose={this.state.gameover}/>
                 <div className="btn-groups">
                     <div className="btn-useful" id="badend-btn" onClick={this.setBadEnd}>BadEnd</div>
                     <div className="btn-useful" id="goodend-btn" onClick={this.setGoodEnd}>GoodEnd</div>
