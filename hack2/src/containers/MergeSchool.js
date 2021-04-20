@@ -144,6 +144,11 @@ class MergeSchool extends Component {
             if (bestPrev > qsRankNow) {
                 this.setState({best_qs_ranking: qsRankNow});
             }
+
+            if(this.checkWin(nextBoardSetWithRandom.board)) {
+                this.setState({win: true});
+                console.log("Win");
+            }
             
             if (this.checkGameover(nextBoardSetWithRandom.board)) {
                 this.setState({gameover: true});
@@ -262,22 +267,6 @@ class MergeSchool extends Component {
         console.log(result);
         return result;
     };
-    
-    arraysEqual(a, b) {
-        if (a === b) return true;
-        if (a == null || b == null) return false;
-        if (a.length !== b.length) return false;
-      
-        // If you don't care about the order of the elements inside
-        // the array, you should sort both arrays here.
-        // Please note that calling sort on an array will modify that array.
-        // you might want to clone your array first.
-      
-        for (var i = 0; i < a.length; ++i) {
-          if (a[i] !== b[i]) return false;
-        }
-        return true;
-      }
 
     // Check if it is gameover
     checkGameover = (board) => {
@@ -301,6 +290,11 @@ class MergeSchool extends Component {
         // #########################
         // # 10 Implement yourself
         // #########################
+        for(let i = 0; i < board.length; i++) {
+            for (let j = 0; j < board[0].length; j++) {
+                if (board[i][j] === 65536) return true;
+            }
+        }
         return false;
     };
 
@@ -357,7 +351,8 @@ class MergeSchool extends Component {
             <>      
                 <Header qs={this.state.qs_ranking} step={this.state.step} 
                         best={this.state.best_qs_ranking} handleNewGame={this.initializeBoard}/>
-                <Board2048 className="wrapper" board={this.state.board} lose={this.state.gameover}/>
+                <Board2048 className="wrapper" board={this.state.board} 
+                    lose={this.state.gameover} win={this.state.win} />
                 <div className="btn-groups">
                     <div className="btn-useful" id="badend-btn" onClick={this.setBadEnd}>BadEnd</div>
                     <div className="btn-useful" id="goodend-btn" onClick={this.setGoodEnd}>GoodEnd</div>
