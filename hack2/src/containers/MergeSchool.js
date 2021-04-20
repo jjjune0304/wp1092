@@ -55,7 +55,7 @@ class MergeSchool extends Component {
         // # 7 Add something yourself
         // boardset.board will be the initial board, please use it directly
         // #########################
-        this.setState({board: boardset.board, qs_ranking: 32768, step: 0});
+        this.setState({board: boardset.board, qs_ranking: 32768, step: 0, win:false, gameover:false});
     }
 
     
@@ -144,15 +144,15 @@ class MergeSchool extends Component {
             if (bestPrev > qsRankNow) {
                 this.setState({best_qs_ranking: qsRankNow});
             }
-
-            if(this.checkWin(nextBoardSetWithRandom.board)) {
-                this.setState({win: true});
-                console.log("Win");
-            }
             
             if (this.checkGameover(nextBoardSetWithRandom.board)) {
                 this.setState({gameover: true});
                 console.log("Lose");
+            }
+
+            if(this.checkWin(nextBoardSetWithRandom.board)) {
+                this.setState({win: true});
+                console.log("Win");
             }
         }
     }
