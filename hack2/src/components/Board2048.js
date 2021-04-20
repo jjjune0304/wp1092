@@ -1,6 +1,6 @@
 import Row from './Row'
 
-export default function Board2048 ({ board, lose, win}) {
+export default function Board2048 ({ board, lose, win, restart}) {
 
     let boardClassName = "board";
     let infoClassName = "info";
@@ -16,7 +16,7 @@ export default function Board2048 ({ board, lose, win}) {
         </table>
         <div className={infoClassName+(lose?" game-over-wrapper":"")} id="game-over-info">
             <span id="game-over-text">{(win?phdSentence:outSentence)}</span>
-            <div className="button" id="game-over-button">Try again</div>
+            <div className="button" id="game-over-button" onClick={restart}>Try again</div>
         </div>
         </>
     );
