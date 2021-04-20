@@ -102,6 +102,16 @@ class MergeSchool extends Component {
             // #########################
             // # 8 Implement yourself
             // #########################
+            if (direction === 'left') {
+                const nextBoard = this.moveLeft(this.state.board);
+                this.checkAndUpdateAfterMove(nextBoard);
+            } else if (direction === 'up') {
+                const nextBoard = this.moveUp(this.state.board);
+                this.checkAndUpdateAfterMove(nextBoard);
+            } else if (direction === 'down') {
+                const nextBoard = this.moveDown(this.state.board);
+                this.checkAndUpdateAfterMove(nextBoard);
+            } 
         }
     }
 
@@ -112,6 +122,7 @@ class MergeSchool extends Component {
             const nextBoardSetWithRandom = this.putGridRandom(nextBoard.board, false);
             let qsRankNow = this.state.qs_ranking;
             let stepNow = this.state.step;
+            let combNow = nextBoard.combination;
             let bestPrev = this.state.best_qs_ranking;
 
             // #########################
@@ -122,8 +133,9 @@ class MergeSchool extends Component {
             // # 5 Implement yourself
             // #########################
             stepNow = stepNow + 1;
-            qsRankNow = qsRankNow - 1;
-
+            if (combNow > 0) {
+                qsRankNow = qsRankNow - combNow;
+            }
             this.setState({board: nextBoardSetWithRandom.board, qs_ranking: qsRankNow, step: stepNow});
             
             // #########################
@@ -186,6 +198,11 @@ class MergeSchool extends Component {
         // #########################
         let board = prevBoard;
         let combination = 0;
+        board = this.rotateClockwise(board);
+		let nextBoard = this.moveRight(board);
+        board = nextBoard.board;
+        combination = nextBoard.combination;
+        board = this.rotateCounterClockwise(board);
         return {board, combination};
     }
     
@@ -196,6 +213,11 @@ class MergeSchool extends Component {
         // #########################
         let board = prevBoard;
         let combination = 0;
+        board = this.rotateCounterClockwise(board);
+		let nextBoard = this.moveRight(board);
+        board = nextBoard.board;
+        combination = nextBoard.combination;
+        board = this.rotateClockwise(board);
         return {board, combination};
     }
     
@@ -206,6 +228,13 @@ class MergeSchool extends Component {
         // #########################
         let board = prevBoard;
         let combination = 0;
+        board = this.rotateClockwise(board);
+        board = this.rotateClockwise(board);
+		let nextBoard = this.moveRight(board);
+        board = nextBoard.board;
+        combination = nextBoard.combination;
+        board = this.rotateClockwise(board);
+        board = this.rotateClockwise(board);
         return {board, combination};
     };
     
@@ -224,7 +253,14 @@ class MergeSchool extends Component {
         // #########################
         // # 8 Implement yourself
         // #########################
-        return matrix;
+        let result = [];
+        for(let i = matrix[0].length - 1; i >=- 0; i--) {
+            let row = matrix.map(e => e[i]);
+            result.push(row);
+        }
+        console.log("Counter");
+        console.log(result);
+        return result;
     };
     
     // Check if it is gameover
@@ -267,14 +303,11 @@ class MergeSchool extends Component {
         // #########################
         if (event.keyCode === 37) {
             this.moveGrid("left");
-        }
-        if (event.keyCode === 38) {
+        } else if (event.keyCode === 38) {
             this.moveGrid("up");
-        }
-        if (event.keyCode === 40) {
+        } else if (event.keyCode === 40) {
             this.moveGrid("down");
         }
-
     }
 
     // Useful function for you to check the endgame
