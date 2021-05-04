@@ -1,3 +1,8 @@
+# HW5 
+Support the following functions: \
+1. Alert "server not responding" \
+2. Logging
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
