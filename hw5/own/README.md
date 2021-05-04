@@ -1,6 +1,6 @@
 # HW5 
-Support the following functions: \
-1. Alert "server not responding" \
+Support the following functions: 
+1. Alert "server not responding" 
 2. Logging
 
 # Getting Started with Create React App
