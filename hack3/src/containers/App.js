@@ -36,7 +36,7 @@ function App() {
   const calculateDistance = async () => {
     // send start and end stations to backend and get distance
     // coding here ...
-    let res = await instance.get('/calculateDistance', {start_station, end_station})
+    let res = await instance.get('/calculateDistance', {params: {start: start_station, end: end_station}})
     setDistance(res.data.distance)
   }
 
@@ -67,12 +67,14 @@ function App() {
             <optgroup label={Object.keys(data)[0]}>
               {Object.values(data)[0].map((s) => 
                     <option key={"optS0-"+s.station_id} 
-                      id={"start-group-"+s.station_id}>{s.station_id}</option>)}
+                      id={"start-group-"+s.station_id}
+                      >{s.station_id}</option>)}
             </optgroup>
             <optgroup label={Object.keys(data)[1]}>
               {Object.values(data)[1].map((s) => 
                     <option key={"optS1-"+s.station_id}
-                      id={"start-group-"+s.station_id}>{s.station_id}</option>)}
+                      id={"start-group-"+s.station_id}
+                      >{s.station_id}</option>)}
             </optgroup>
           </select>
 
@@ -81,12 +83,14 @@ function App() {
             <optgroup label={Object.keys(data)[0]}>
               {Object.values(data)[0].map((s) => 
                     <option key={"optE0-"+s.station_id}
-                      id={"end-group-"+s.station_id}>{s.station_id}</option>)}
+                      id={"end-group-"+s.station_id}
+                      >{s.station_id}</option>)}
             </optgroup>
             <optgroup label={Object.keys(data)[1]}>
               {Object.values(data)[1].map((s) => 
                     <option key={"optE1-"+s.station_id}
-                      id={"end-group-"+s.station_id}>{s.station_id}</option>)}
+                      id={"end-group-"+s.station_id}
+                      >{s.station_id}</option>)}
             </optgroup>
           </select>
 
