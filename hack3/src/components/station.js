@@ -7,7 +7,7 @@ function Station(props) {
   const start = props.start;
   const end = props.end;
   const handleSelect = () => {
-    props.select()
+    props.select(s_id)
   };
 
   const color = (k) => {
@@ -19,7 +19,7 @@ function Station(props) {
   const line = <div id={'l-'+s_id} className={"line"+" "+color(s_type)}></div>;
   return (
     <div className="station-line-container">
-      <div id={'s-'+s_id} className={"station-and-name"}> {/* you should add both id and onClick to attributes */
+      <div id={'s-'+s_id} className={"station-and-name"} onClick={handleSelect}> {/* you should add both id and onClick to attributes */
 
       }
         <div className={"station-rectangle"+" "+color(s_type)+(end||start?" end":"")}>{s_id}</div>
