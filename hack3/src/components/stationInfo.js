@@ -1,11 +1,12 @@
 import React from 'react'
 
 function StationInfo(props) {
+  const info = props.station_info;
   const labels = [
-    { label: '車站名稱', value: 'station_name' },
-    { label: '車站位址', value: 'address' },
-    { label: '詢問處位置', value: 'service_counter' },
-    { label: '自行車進出', value: 'enable_bicycle' }
+    { label: '車站名稱', value: (info?info.station_name:"")},
+    { label: '車站位址', value: (info?info.address:"")},
+    { label: '詢問處位置', value: (info?info.service_counter:"")},
+    { label: '自行車進出', value: (info?info.enable_bicycle:"")}
   ]
 
   return (
@@ -17,14 +18,22 @@ function StationInfo(props) {
           </tr>
         </thead>
         <tbody>
-          {
-            // generate multiple
-            //   <tr>
-            //     <td></td>
-            //     <td></td>
-            //   </tr>
-            // coding here ...
-          }
+          <tr>
+            <td>{labels[0].label}</td>
+            <td>{labels[0].value}</td>
+          </tr>
+          <tr>
+            <td>{labels[1].label}</td>
+            <td>{labels[1].value}</td>
+          </tr>
+          <tr>
+            <td>{labels[2].label}</td>
+            <td>{labels[2].value}</td>
+          </tr>
+          <tr>
+            <td>{labels[3].label}</td>
+            <td>{labels[3].value}</td>
+          </tr>
         </tbody>
       </table>
     </div>

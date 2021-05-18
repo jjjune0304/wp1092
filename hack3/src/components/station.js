@@ -6,6 +6,9 @@ function Station(props) {
   const s_type = props.s_type;
   const start = props.start;
   const end = props.end;
+  const handleSelect = () => {
+    props.select()
+  };
 
   const color = (k) => {
     if (k === 'R') return 'red';

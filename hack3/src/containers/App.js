@@ -30,16 +30,18 @@ function App() {
     // fetch data from database via backend
     // coding here ...
     let res = await instance.get('/getStations')
-    console.log(res.data)
     setData(res.data.data)
   }
 
   const calculateDistance = async () => {
     // send start and end stations to backend and get distance
     // coding here ...
-    let res = await instance.get('/calculateDistance')
-    console.log(res.data)
+    let res = await instance.get('/calculateDistance', {start_station, end_station})
     setDistance(res.data.distance)
+  }
+
+  const select = (s) => {
+    setCurrentStationId(s)
   }
 
   // fetch data here after 1st render
@@ -86,9 +88,9 @@ function App() {
         </div>
 
         <div className="route-graph-info-container">
-          <RouteGraph route_data={Object.values(data)[0]} /> {/* you should pass data to child component with your own customized parameters */}
-          <RouteGraph route_data={Object.values(data)[1]} /> {/* you should pass data to child component with your own customized parameters */}
-          <StationInfo /> {/* you should pass data to child component with your own customized parameters */}
+          <RouteGraph route_data={Object.values(data)[0]} select={setCurrentStationId}/> {/* you should pass data to child component with your own customized parameters */}
+          <RouteGraph route_data={Object.values(data)[1]} select={setCurrentStationId}/> {/* you should pass data to child component with your own customized parameters */}
+          <StationInfo station_info={station_info}/> {/* you should pass data to child component with your own customized parameters */}
         </div>
         
       </div>

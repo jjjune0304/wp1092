@@ -116,14 +116,14 @@ const CalculateDistance = async (req, res) => {
   let answer = -1
 
   try {
-    const start = '' // get parameter from frontend
-    const end = '' // get parameter from frontend
+    const start = req.body.start // get parameter from frontend
+    const end = req.body.end // get parameter from frontend
 
     // fetch data from mongo
     // coding here ...
     await Station.find({}, function(err, alldata) { data = alldata; });
     result = tidyUpData(data, result)
-    answer = calculate(result, start, end)
+    // answer = calculate(result, start, end)
 
     if (Object.keys(result).length) {
       // return correct response here ...
