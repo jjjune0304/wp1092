@@ -1,0 +1,40 @@
+Arguments: 
+  /usr/bin/node /usr/bin/yarn add mongoose dotenv-defaults --save
+
+PATH: 
+  /home/ysr/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.16.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/ysr/Desktop/web/hw/hw6/own/backend/package.json: Unexpected token b in JSON at position 160
+      at JSON.parse (<anonymous>)
+      at /usr/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+  	  "server": "nodemon server.js"
+    }, backend
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,0 +1,19 @@
+{
+  "name": "chat-tmp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "axios": "^0.21.1",
+    "nodemon": "^2.0.7",
+    "react-scripts": "^4.0.3"
+  },
+  "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0"
+  }
+}

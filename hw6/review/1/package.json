@@ -1,0 +1,24 @@
+{
+  "name": "own",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd frontend && npm start",
+    "server": "cd backend && npm run server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "axios": "^0.21.1",
+    "dotenv-defaults": "^2.0.1",
+    "mongoose": "^5.12.10",
+    "styled-components": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
