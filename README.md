@@ -12,4 +12,6 @@
 
 ## Practice 6 : Score Card DB
 
-## Practice 7 : Chat Room
+## Practice 7 : Chat Room (WebSocket)
+
+## Practice 8 : Chat Room (GraphQL)
