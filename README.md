@@ -9,3 +9,7 @@
 ## Practice 4 : Fake Spreadsheet
 
 ## Practice 5 : Number Guessing Game
+
+## Practice 6 : Score Card DB
+
+## Practice 7 : Chat Room
