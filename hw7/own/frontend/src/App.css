@@ -1,0 +1,71 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 500px;
+  margin: auto;
+}
+
+.App-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-title h1 {
+  margin: 0;
+  margin-right: 20px;
+  font-size: 3em;
+}
+
+.App-messages {
+  width: 100%;
+  height: 300px;
+  background: #eeeeee52;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.App-message-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.App-message {
+  width: 100%;
+}
+
+.App-message span {
+  background: lightgray;
+  color: gray;
+  border-radius: 3px;
+  padding: 5px;
+  overflow: auto;
+}
+
+.left {
+  text-align: left;
+  margin-left: 5px;
+}
+
+.left span {
+  margin-left: 5px;
+}
+
+.right {
+  text-align: right;
+  margin-right: 5px;
+}
+
+.right span {
+  margin-right: 5px;
+}
+
+p {
+  white-space: pre-line;
+}
