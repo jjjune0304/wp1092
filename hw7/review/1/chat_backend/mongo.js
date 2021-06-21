@@ -1,17 +1,13 @@
-// import mongoose from 'mongoose';
-
 const mongoose = require('mongoose');
-const dotenv = require('dotenv-defaults');
+//import mongoose from 'mongoose';
+const dotenv =require ('dotenv-defaults');
 
 // i use mongodb://localhost:27017/cardmongo for MONGO_URL
+dotenv.config();
 
 function connectMongo() {
-  dotenv.config();
-  if(!process.env.MONGO_URL){
-    console.log('Missing MONGO_URL!')
-    process.exit(i);
-  }
   mongoose.connect(process.env.MONGO_URL, {
+  //mongoose.connect('mongodb+srv://sam:sam861128@chatbox.iz5un.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

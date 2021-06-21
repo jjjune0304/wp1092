@@ -24,9 +24,12 @@
 
       const server = new WebSocket('ws://localhost:8080');
       server.onopen = () => console.log('Server connected.');
+      //當server用client.sendEvent傳資料過來時，client這邊onmessage會收到
       server.onmessage = (m) => {
         onEvent(JSON.parse(m.data));
       };
+
+
       server.sendEvent = (e) => server.send(JSON.stringify(e));
 
       const startChat = () => {
@@ -40,6 +43,7 @@
         });
       };
 
+      
       const sendMessage = () => {
         if (!inputDOM.value || !nameDOM.value || !toDOM.value) {
           throw new Error('Empty input!');
@@ -51,21 +55,7 @@
         });
       };
 
-      const renderMessages = () => {
-        resetMessages();
-
-        messages.forEach(({ body, name }) => {
-          const newEle = document.createElement('li');
-          newEle.innerHTML = `${name}: ${body}`;
-          messagesDOM.appendChild(newEle);
-        });
-      };
-
-      const resetMessages = () => {
-        // remove all children
-        messagesDOM.innerHTML = '';
-      };
-
+    ////////////////////////////////
       const onEvent = (e) => {
         const { type } = e;
 
@@ -82,6 +72,25 @@
 
         renderMessages();
       };
+
+
+      const renderMessages = () => {
+        resetMessages();
+
+        messages.forEach(({ body, name }) => {
+          const newEle = document.createElement('li');
+          newEle.innerHTML = `${name}: ${body}`;
+          messagesDOM.appendChild(newEle);
+        });
+      };
+
+      const resetMessages = () => {
+        // remove all children
+        messagesDOM.innerHTML = '';
+      };
+
+      ////////////////////////////////
+
     </script>
   </body>
 </html>

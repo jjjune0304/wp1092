@@ -1,54 +1,26 @@
-import { useState } from "react";
-
-const client = new WebSocket("ws://localhost:8080");
+import { useState } from "react";  
+const client = new WebSocket('ws://localhost:4000');
 
 const useChat = () => {
   const [status, setStatus] = useState({}); // { type, msg }
-  const sendData = async (data) => {
-    await client.send(JSON.stringify(data));
+  const sendData = async (d) => {
+    console.log(d)
+    var mes = {};
+    var data = {};
+    const name = d[0].split("_");
+    data.name = d[2];
+    data.to = (name[0]===d[2])?name[1]:name[0];
+    data.body = d[1];
+    mes.data = data;
+    mes.type = "MESSAGE";
+    console.log(mes)
+    await client.send(
+        JSON.stringify(mes));
   };
   const sendMessage = (payload) => {
-    // console.log(payload);
-    const names = payload.key.split("_");
-    const data = {
-      type: "MESSAGE",
-      data: { name: names[0], to: names[1], body: payload.body },
-    };
-    sendData(data);
+    setStatus(["MESSAGE",payload.body]);
+    sendData([payload.key, payload.body,payload.me]);
   }; // { key, msg }
-  const sendActive = (payload) => {
-    // console.log(payload);
-    const names = payload.split("_");
-    const data = {
-      type: "CHAT",
-      data: { name: names[0], to: names[1] },
-    };
-    sendData(data);
-  };
-  client.onmessage = (byteString) => {
-    const string = byteString.data;
-    const { type, data } = JSON.parse(string);
-    switch (type) {
-      case "CHAT": {
-        setStatus({ type, msg: data.messages });
-        break;
-      }
-      case "MESSAGE": {
-        if (!status.msg) {
-          setStatus({ type, msg: [data.message] });
-        } else {
-          setStatus(({ type, msg }) => ({
-            type,
-            msg: [...msg, data.message],
-          }));
-        }
-        break;
-      }
-      default:
-        break;
-    }
-    // setStatus(JSON.parse(data));
-  };
-  return { status, sendMessage, sendActive };
+  return { status, sendMessage };
 };
 export default useChat;
