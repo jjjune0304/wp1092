@@ -1,0 +1,61 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 500px;
+  margin: auto;
+}
+
+.App-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-title h1 {
+  margin: 0;
+  margin-right: 20px;
+  font-size: 3em;
+}
+
+.App-messages {
+  width: 100%;
+  height: 300px;
+  background: #eeeeee52;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.message-box {
+  height: 210px;
+  overflow: auto;
+}
+
+.message-line {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+.my-message {
+  justify-content: flex-end;
+  margin-left: 10%;
+}
+
+.friend-message {
+  justify-content: flex-start;
+  margin-right: 10%;
+}
+
+.message-content {
+  background-color: rgb(238, 238, 238);
+  color: rgb(137, 137, 137);
+  margin: 0px 5px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  word-break: break-all;
+}
