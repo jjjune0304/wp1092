@@ -1,0 +1,38 @@
+type Mutation {
+  createUser(name: String!): User
+  checkUser(name: String!): Boolean
+  createChatBox(name1: String, name2: String): ChatBox
+  createMessage(data: CreateMessageInput!): Message
+}
+type Query {
+  chatBoxes(query: String!): ChatBox
+  users(query: String!): User
+}
+type Subscription {
+  messages: MessageSubscriptionPayload!
+}
+type User {
+  name: String!
+}
+type ChatBox {
+  id: ID!
+  name: String!
+  users: [String!]!
+  messages: [Message]
+}
+type Message {
+  id: ID!
+  sender: User!
+  body: String!
+  chatBox: ChatBox!
+}
+type MessageSubscriptionPayload {
+  chatBox: String!
+  data: Message!
+}
+
+input CreateMessageInput {
+  sender: String!
+  body: String!
+  chatBox: String!
+}
